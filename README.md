@@ -76,5 +76,4 @@ ________________________________________________________________________________
 Hand Gesture
 
 
-## Code
-## For code Please contact on given email
+
