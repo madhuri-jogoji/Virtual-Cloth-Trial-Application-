@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TRY ON</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+        <style>
+          body {font-family: Arial, Helvetica, sans-serif;}
+          * {box-sizing: border-box;}
+          
+          /* Button used to open the chat form - fixed at the bottom of the page */
+          .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+          }
+          
+          /* The popup chat - hidden by default */
+          .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+          }
+          
+          /* Add styles to the form container */
+          .form-container {
+            max-width: 800px;
+            padding: 10px;
+            background-color: white;
+          }
+    
+         
+          
+          /* Full-width textarea */
+          .form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            resize: none;
+            min-height: 200px;
+          }
+          
+          /* When the textarea gets focus, do something */
+          .form-container textarea:focus {
+            background-color: #ddd;
+            outline: none;
+          }
+          
+          /* Set a style for the submit/send button */
+          .form-container .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            padding-bottom: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+          }
+          
+          /* Add a red background color to the cancel button */
+          .form-container .cancel {
+            background-color: red;
+            padding-bottom: 5px;
+    
+          }
+          
+          /* Add some hover effects to buttons */
+          .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+          }
+    
+              #snackbar {
+                visibility: hidden;
+                min-width: 250px;
+                margin-left: -125px;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                border-radius: 2px;
+                padding: 16px;
+                position: fixed;
+                z-index: 1;
+                left: 50%;
+                bottom: 30px;
+                font-size: 17px;
+             }
+             #grl{
+              color:aqua;
+            }
+            #nav{
+              background-color:black;
+            }
+            #nav1{
+              color:blueviolet;
+            }
+            #nav2{
+              color:cadetblue;
+            }
+            
+            #head{
+              background-color:lightslategrey;
+            }
+             #image-back{
+              background-color:lavender;
+             }
+             #back{
+              background-color:cadetblue
+             }
+             h1{
+              color: white;
+             }
+             #drop-color{
+                background-color: #333;
+              }
+    
+          </style>
+
+      </head>
+</head>
+<body>
+  <div >
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div id="nav" class="container-fluid">
+        <a id="nav2" class="navbar-brand" onclick="myFunction()" href="/index">TRY ON</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a id="nav1" class="nav-link active" aria-current="page" href="/index">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav1" class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav1" class="nav-link" href="/contact">Contact Us</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/cart">Cart</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a id="nav1" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+              </a>
+              <ul id="drop-color" class="dropdown-menu">
+                <li><a id="grl" class="dropdown-item" href="/girl">Women</a></li>
+                <li><a id="grl" class="dropdown-item" href="/boy">Men</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="nav1" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                WOMEN
+              </a>
+              <ul id="drop-color" class="dropdown-menu">
+                <li><a id="grl" class="dropdown-item" href="/G_collor">collor</a></li>
+                <li><a id="grl" class="dropdown-item" href="/G_round">round neck</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+            </li>
+            
+          </ul>
+          <div class="d-flex" role="search">
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+            <button class="btn btn-outline-success mx-2" type="submit">Cart</button>
+            <form action="/logout">
+              <button class="btn btn-outline-success mx-2" type="submit">logout</button>
+            </form>
+           
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+ 
+  <div id="head">
+    <center><h1 class="fs-1 text">Shopping Portal</h1></center>
+  
+        <center><b>WOMEN CLOTHING</b></center>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col" >
+              <div class="card" id="image-back">
+                <center><img src="{{url_for('static',filename='11.png')}}" alt="tshirt" width="50%"></center>
+                <div class="card-body">
+                  <center><h5 class="card-title">Pink t-shirt</h5></center>
+                  <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                </div>
+                <form action="/cart">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                       <button class="btn btn-primary" type="submit">Add To Cart</button>
+                  </div>
+                </form>
+                <form action="/video10">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                      <button class="btn btn-primary" type="submit">Try It Now</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" id="image-back">
+                <center><img src="{{url_for('static',filename='12.png')}}" alt="tshirt" width="50%"></center>
+                <div class="card-body">
+                  <center><h5 class="card-title">White t-shirt</h5></center>
+                  <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                </div>
+                <form action="/cart">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                       <button class="btn btn-primary" type="submit">Add To Cart</button>
+                  </div>
+              </form>
+              <form action="/video11">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                      <button class="btn btn-primary" type="submit">Try It Now</button>
+                  </div>
+                 
+              </form>
+               
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" id="image-back">
+                <center><img src="{{url_for('static',filename='13.png')}}" alt="tshirt" width="50%"></center>
+                <div class="card-body">
+                  <center><h5 class="card-title">Pink t-shirt</h5></center>
+                  <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p> -->
+                </div>
+                <form action="/cart">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                       <button class="btn btn-primary" type="submit">Add To Cart</button>
+                  </div>
+              </form>
+              <form action="/video12">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                      <button class="btn btn-primary" type="submit">Try It Now</button>
+                  </div>
+                  
+              </form>
+               
+              </div>
+            </div>
+            <div class="col">
+             <div class="card" id="image-back">
+                <center><img src="{{url_for('static',filename='14.png')}}" alt="tshirt" width="50%"></center>
+                <div class="card-body">
+                  <center><h5 class="card-title">White t-shirt</h5></center>
+                  <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                </div>
+                <form action="/cart">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                         <button class="btn btn-primary" type="submit">Add To Cart</button>
+                    </div>
+                </form>
+                <form action="/video13">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="mybtn" class="btn btn-primary" type="submit">Try It Now</button>
+                        
+                    </div>                   
+                </form>
+               
+                
+               
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card" id="image-back">
+                <center><img src="{{url_for('static',filename='15.png')}}" alt="tshirt" width="50%"></center>
+                <div class="card-body">
+                  <center><h5 class="card-title">Pink t-shirt</h5></center>
+                  <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p> -->
+                </div>
+                <form action="/cart">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                       <button class="btn btn-primary" type="submit">Add To Cart</button>
+                  </div>
+              </form>
+              <form action="/video14">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                      <button class="btn btn-primary" type="submit">Try It Now</button>
+                  </div>
+                  
+              </form>
+               
+              </div>
+            </div>
+            <div class="col">
+             <div class="card" id="image-back">
+                <center><img src="{{url_for('static',filename='16.png')}}" alt="tshirt" width="50%"></center>
+                <div class="card-body">
+                  <center><h5 class="card-title">White t-shirt</h5></center>
+                  <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                </div>
+                <form action="/cart">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                         <button class="btn btn-primary" type="submit">Add To Cart</button>
+                    </div>
+                </form>
+                <form action="/video15">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="mybtn" class="btn btn-primary" type="submit">Try It Now</button>
+                        
+                    </div>                   
+                </form>
+               
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card" id="image-back">
+                 <center><img src="{{url_for('static',filename='17.png')}}" alt="tshirt" width="50%"></center>
+                 <div class="card-body">
+                   <center><h5 class="card-title">White t-shirt</h5></center>
+                   <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                 </div>
+                 <form action="/cart">
+                     <div class="d-grid gap-2 col-6 mx-auto">
+                          <button class="btn btn-primary" type="submit">Add To Cart</button>
+                     </div>
+                 </form>
+                 <form action="/video16">
+                     <div class="d-grid gap-2 col-6 mx-auto">
+                         <button id="mybtn" class="btn btn-primary" type="submit">Try It Now</button>
+                         
+                     </div>                   
+                 </form>
+                
+               </div>
+             </div>
+          </div>
+
+      </div>
+      
+      <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+        }
+        
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+        }
+      </script>
+      
+        
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+</body>
+</html>

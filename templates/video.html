@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+        /* #video {
+                
+        } */
+    </style>
+</head>
+<body>
+    ABOUT
+    <!-- <div id="video">
+        
+    </div>  -->
+    <form action="script0.js">
+        <button type='button' id ='retrieve'>Submit</button>
+    
+        <img src="" id="myimg"></img>
+    </form>
+            <script>
+                $(document).ready(function() {
+            $('#retrieve').click(function(){
+                $.ajax({
+                url: "{{url_for('video0')}}",
+                type: "GET",
+                success: function(response) {
+                    $("#myimg").attr('src', '/static/' + response);
+            },
+            error: function(xhr) {
+                //Do Something to handle error
+            }
+            });
+            });
+        });
+            </script>
+    
+   
+    
+
+
+
+
+      
+    <!-- <div class="video">
+        <img src="{{url_for('video1')}}" width="50%">
+    </div> 
+    <div class="video">
+        <img src="{{url_for('video2')}}" width="50%">
+    </div> 
+    <div class="video">
+        <img src="{{url_for('video3')}}" width="50%">
+    </div> 
+    <div class="video">
+        <img src="{{url_for('video4')}}" width="50%">
+    </div> 
+    <div class="video">
+        <img src="{{url_for('video5')}}" width="50%">
+    </div>  -->
+    
+
+    
+
+</body>
+</html>
