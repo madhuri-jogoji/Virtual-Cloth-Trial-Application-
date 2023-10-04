@@ -1,0 +1,5 @@
+pip install opencv-python   
+pip install flask   
+env\Scripts\activate.bat    
+virtualenv env   
+ pip install virtualenv
