@@ -147,90 +147,43 @@
       color: aquamarine;
       background-color:black;
     }
-    #grl{
-      color:aqua;
-    }
-    #nav{
-      background-color:black;
-    }
-    #nav1{
-      color:blueviolet;
-    }
-    #nav2{
-      color:cadetblue;
-    }
-    
-    #head{
-              background-color:lightslategrey;
-            }
-             #image-back{
-              background-color:lavender;
-             }
-             #back{
-              background-color:cadetblue
-             }
-             h1{
-              color: white;
-             }
-             #drop-color{
-                background-color: #333;
-              }
       </style>
   </head>
   <body>
-    <div id="n">
-      <nav  class="navbar navbar-expand-lg bg-body-tertiary">
-        <div id="nav" class="container-fluid">
-          <a id="nav2" class="navbar-brand" onclick="myFunction()" href="#">TRY ON</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" onclick="myFunction()" href="#">TRY ON</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a id="nav1" class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a id="nav1" class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <li class="nav-item">
-                <a id="nav1" class="nav-link" href="/contact">Contact Us</a>
+                <a class="nav-link" href="/contact">Contact Us</a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="/cart">Cart</a>
-              </li> -->
-              <li class="nav-item dropdown">
-                <a id="nav1" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Category
-                </a>
-                <ul id="drop-color" class="dropdown-menu">
-                  <li><a id="grl" class="dropdown-item" href="/girl">Women</a></li>
-                  <li><a id="grl" class="dropdown-item" href="/boy">Men</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                </ul>
-              </li>
-             
-              
             </ul>
             <div class="d-flex" role="search">
-              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-              <button class="btn btn-outline-success mx-2" type="submit">Cart</button>
-              <form action="/logout">
-                <button class="btn btn-outline-success mx-2" type="submit">logout</button>
-              </form>
-             
+              
+              <!-- <form action="/login"> -->
+                <button class="btn btn-outline-success mx-2"  type="submit" class="open-button" onclick="openForm()">Login</button>
+              <!-- </form> -->
+              
+              <!-- <form action="/signup"> -->
+                <button class="btn btn-outline-success mx-2" type="submit" class="open-button" onclick="Opensign()">SignUp</button>
+              <!-- </form> -->
               
             </div>
           </div>
         </div>
       </nav>
-    </div>
-    
       <div>
-        <div id="head">
-          <center><h1 class="fs-1 text">Shopping Portal</h1></center>
-        </div>
-        
+        <h1 class="fs-1 text">Shopping Portal</h1>
         <div id="carouselExampleIndicators" class="carousel slide">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -239,17 +192,14 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
+              <img src="{{url_for('static',filename='bg3.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
               <img src="{{url_for('static',filename='bg2.jpg')}}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
               <img src="{{url_for('static',filename='bg1.jpg')}}" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item">
-              <img src="{{url_for('static',filename='bg3.jpg')}}" class="d-block w-100" alt="...">
-            </div>
-            <!-- <div class="carousel-item">
-              <img src="{{url_for('static',filename='bg4.jpg')}}" class="d-block w-100" alt="...">
-            </div> -->
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -274,14 +224,14 @@
       </div> -->
 
       <div class="chat-popup" id="myForm" mt-100>
-        <form action="/" class="form-container">
+        <form action="/login_validation" method="post" class="form-container" class="form">
           <div class="head">
             <center><label for="msg"><b>Login Now</b></label></center><br>
           </div><br>
           
           
-          <center>Username:<input id="input" type="text" placeholder="Enter username"></center><br>
-          <center>Password:<input id="input" type="password" placeholder="Enter password"></center><br>
+          <center>Username:<input id="input" type="text" placeholder="Enter username" name="username"></center><br>
+          <center>Password:<input id="input" type="password" placeholder="Enter password" name="password"></center><br>
           <button type="submit" class="btn">Login</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
           
@@ -294,14 +244,14 @@
       </div>
 
       <div class="chat-popup" id="SForm" mt-100>
-        <form action="/" class="form-container">
+        <form action="/add_user" method="post" class="form-container" class="form">
           <div class="head">
             <center><label for="msg"><b>Registration</b></label></center><br>
           </div><br>
           
-          <center>Username:<input id="input" type="text" placeholder="Enter username"></center><br>
-          <center>New Password:<input id="input" type="password" placeholder="Enter password"></center><br>
-          <center>Re-enter Password:<input id="input" type="password" placeholder="Enter password"></center><br>
+          <center>Username:<input id="input" type="text" placeholder="Enter username" name="rusername" required></center><br>
+          <center>Email:<input id="input" type="email" placeholder="Enter email" name="remail" required></center><br>
+          <center>New Password:<input id="input" type="password" placeholder="Enter password" name="rpassword" required></center><br>
           <button type="submit" class="btn">Register</button>
           <button type="button" class="btn cancel" onclick="closesign()">Cancel</button>
           
