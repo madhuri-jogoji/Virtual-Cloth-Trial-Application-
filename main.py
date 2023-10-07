@@ -154,21 +154,21 @@ def TryOn(clothNum=0,gen='boy',cat="round",stop_web=False):
 
 
 
-@main.route("/")
+@main.route("/index")
 def home():
     if 'id' not in session:
-        return render_template("front.html")
+        return render_template("index.html")
     else:
-        return redirect('/index')
+        return redirect('/home')
 
     
 
-@main.route("/index")
+@main.route("/home")
 def index():
     if 'id' in session:
-        return render_template("index.html")
+        return render_template("home.html")
     else:
-        return redirect('/')
+        return redirect('/index')
 
     
 
