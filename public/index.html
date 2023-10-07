@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TRY ON</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+      * {box-sizing: border-box;}
+      
+      /* Button used to open the chat form - fixed at the bottom of the page */
+      .open-button {
+        background-color: #555;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+      }
+      
+      /* The popup chat - hidden by default */
+      .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+      }
+
+      #SForm{
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+        
+      }
+
+      .head{
+        background-color:#555;
+        color: whitesmoke;      
+      }
+      
+      /* Add styles to the form container */
+      .form-container {
+        max-width: 800px;
+        padding: 10px;
+        background-color: white;
+      }
+
+     
+      
+      /* Full-width textarea */
+      .form-container textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+        resize: none;
+        min-height: 200px;
+      }
+      
+      /* When the textarea gets focus, do something */
+      .form-container textarea:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      
+      /* Set a style for the submit/send button */
+      .form-container .btn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px 20px;
+        padding-bottom: 5px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom:10px;
+        opacity: 0.8;
+      }
+      
+      /* Add a red background color to the cancel button */
+      .form-container .cancel {
+        background-color: red;
+        padding-bottom: 5px;
+
+      }
+      
+      /* Add some hover effects to buttons */
+      .form-container .btn:hover, .open-button:hover {
+        opacity: 1;
+      }
+
+          #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+         }
+
+         /* snackbar style */
+    #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+   
+
+    @-webkit-keyframes fadein {
+      from {bottom: 0; opacity: 0;} 
+      to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+      from {bottom: 30px; opacity: 1;} 
+      to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+      from {bottom: 30px; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+    }
+    #snackbar{
+      color: aquamarine;
+      background-color:black;
+    }
+    #grl{
+      color:aqua;
+    }
+    #nav{
+      background-color:black;
+    }
+    #nav1{
+      color:blueviolet;
+    }
+    #nav2{
+      color:cadetblue;
+    }
+    
+    #head{
+              background-color:lightslategrey;
+            }
+             #image-back{
+              background-color:lavender;
+             }
+             #back{
+              background-color:cadetblue
+             }
+             h1{
+              color: white;
+             }
+             #drop-color{
+                background-color: #333;
+              }
+      </style>
+  </head>
+  <body>
+    <div id="n">
+      <nav  class="navbar navbar-expand-lg bg-body-tertiary">
+        <div id="nav" class="container-fluid">
+          <a id="nav2" class="navbar-brand" onclick="myFunction()" href="#">TRY ON</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a id="nav1" class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a id="nav1" class="nav-link" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a id="nav1" class="nav-link" href="/contact">Contact Us</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="/cart">Cart</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a id="nav1" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Category
+                </a>
+                <ul id="drop-color" class="dropdown-menu">
+                  <li><a id="grl" class="dropdown-item" href="/girl">Women</a></li>
+                  <li><a id="grl" class="dropdown-item" href="/boy">Men</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+             
+              
+            </ul>
+            <div class="d-flex" role="search">
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+              <button class="btn btn-outline-success mx-2" type="submit">Cart</button>
+              <form action="/logout">
+                <button class="btn btn-outline-success mx-2" type="submit">logout</button>
+              </form>
+             
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+      <div>
+        <div id="head">
+          <center><h1 class="fs-1 text">Shopping Portal</h1></center>
+        </div>
+        
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{url_for('static',filename='bg2.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url_for('static',filename='bg1.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{url_for('static',filename='bg3.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <!-- <div class="carousel-item">
+              <img src="{{url_for('static',filename='bg4.jpg')}}" class="d-block w-100" alt="...">
+            </div> -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- snackbar -->
+        <div id="snackbar">NOW TRY ON CLOTHS VIRTUALLY</div>
+        
+        
+      </div>
+      <!-- <div>
+        <form action="stop-webcam">
+          <button class="btn btn-outline-success mx-2" type="submit">STOP WEBCAM</button>
+        </form>
+        
+      </div> -->
+
+      <div class="chat-popup" id="myForm" mt-100>
+        <form action="/" class="form-container">
+          <div class="head">
+            <center><label for="msg"><b>Login Now</b></label></center><br>
+          </div><br>
+          
+          
+          <center>Username:<input id="input" type="text" placeholder="Enter username"></center><br>
+          <center>Password:<input id="input" type="password" placeholder="Enter password"></center><br>
+          <button type="submit" class="btn">Login</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+          
+          <div class="container" style="background-color:#f1f1f1">
+            <span class="psw">Forgot <a href="#">password?</a></span>
+            <p>Not a member?<a href="#" onclick="Opensign()&closeForm()">Create account</a></p>
+          </div>
+        </form>
+        
+      </div>
+
+      <div class="chat-popup" id="SForm" mt-100>
+        <form action="/" class="form-container">
+          <div class="head">
+            <center><label for="msg"><b>Registration</b></label></center><br>
+          </div><br>
+          
+          <center>Username:<input id="input" type="text" placeholder="Enter username"></center><br>
+          <center>New Password:<input id="input" type="password" placeholder="Enter password"></center><br>
+          <center>Re-enter Password:<input id="input" type="password" placeholder="Enter password"></center><br>
+          <button type="submit" class="btn">Register</button>
+          <button type="button" class="btn cancel" onclick="closesign()">Cancel</button>
+          
+          
+          <div class="container" style="background-color:#f1f1f1">
+            <p>Already a member?<a href="#" onclick="openForm()&closesign()">Login</a></p>
+          </div>
+        </form>
+        
+      </div>
+     
+      <script>
+                function openForm() {
+                  document.getElementById("myForm").style.display = "block";
+                }
+                
+                function closeForm() {
+                  document.getElementById("myForm").style.display = "none";
+                }
+
+                function closesign() {
+                  document.getElementById("SForm").style.display = "none";
+                }
+
+                function Opensign() {
+                  document.getElementById("SForm").style.display = "block";
+                }
+
+
+                function myFunction() {
+                  // Get the snackbar DIV
+                  var x = document.getElementById("snackbar");
+
+                  // Add the "show" class to DIV
+                  x.className = "show";
+
+                  // After 3 seconds, remove the show class from DIV
+                  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                }
+        </script>
+
+
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
